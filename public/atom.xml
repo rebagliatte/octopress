@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[CodeHipsters]]></title>
+  <link href="http://yoursite.com/atom.xml" rel="self"/>
+  <link href="http://yoursite.com/"/>
+  <updated>2012-07-18T22:25:24-03:00</updated>
+  <id>http://yoursite.com/</id>
+  <author>
+    <name><![CDATA[CodeHipsters]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Hello World]]></title>
+    <link href="http://yoursite.com/blog/2012/07/18/hello-world/"/>
+    <updated>2012-07-18T22:04:00-03:00</updated>
+    <id>http://yoursite.com/blog/2012/07/18/hello-world</id>
+    <content type="html"><![CDATA[<p>Love this!</p>
+]]></content>
+  </entry>
+  
+</feed>
