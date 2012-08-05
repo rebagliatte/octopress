@@ -2,10 +2,10 @@
 #      Main Configs       #
 # ----------------------- #
 
-url: http://yoursite.com
-title: CodeHipsters
-subtitle: Gonz + Santi + Seba + Vero
-author: CodeHipsters
+url: http://codepath.io
+title: CodePath
+subtitle: Handcrafting awesomeness
+author: CodePath
 simple_search: http://google.com/search
 description:
 

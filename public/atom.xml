@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[CodeHipsters]]></title>
-  <link href="http://yoursite.com/atom.xml" rel="self"/>
-  <link href="http://yoursite.com/"/>
-  <updated>2012-07-18T22:25:24-03:00</updated>
-  <id>http://yoursite.com/</id>
+  <title><![CDATA[CodePath]]></title>
+  <link href="http://codepath.io/atom.xml" rel="self"/>
+  <link href="http://codepath.io/"/>
+  <updated>2012-08-05T16:45:22-03:00</updated>
+  <id>http://codepath.io/</id>
   <author>
-    <name><![CDATA[CodeHipsters]]></name>
+    <name><![CDATA[CodePath]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Hello World]]></title>
-    <link href="http://yoursite.com/blog/2012/07/18/hello-world/"/>
+    <link href="http://codepath.io/blog/2012/07/18/hello-world/"/>
     <updated>2012-07-18T22:04:00-03:00</updated>
-    <id>http://yoursite.com/blog/2012/07/18/hello-world</id>
+    <id>http://codepath.io/blog/2012/07/18/hello-world</id>
     <content type="html"><![CDATA[<p>Love this!</p>
 ]]></content>
   </entry>
