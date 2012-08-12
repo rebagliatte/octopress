@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-08-05T16:45:22-03:00</updated>
+  <updated>2012-08-12T15:34:49-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -18,7 +18,15 @@
     <link href="http://codepath.io/blog/2012/07/18/hello-world/"/>
     <updated>2012-07-18T22:04:00-03:00</updated>
     <id>http://codepath.io/blog/2012/07/18/hello-world</id>
-    <content type="html"><![CDATA[<p>Love this!</p>
+    <content type="html"><![CDATA[<p>Love this!
+Bla</p>
+
+<figure class='code'><figcaption><span>Ruby Test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s1">&#39;Pure awesomeness&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
 ]]></content>
   </entry>
   

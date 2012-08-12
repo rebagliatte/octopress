@@ -9,5 +9,10 @@ published: true
 ---
 
 Love this!
+Bla
 
+
+``` ruby Ruby Test
+puts 'Pure awesomeness'
+```
 

@@ -1,2 +1,19 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
+
+html {
+  background: #f2f2f2;
+}
+body > nav,
+body > nav li + li,
+body > nav li + li a {
+  border: 0;
+}
+#content {
+  margin-right: 0;
+  border-right: 0;
+  aside.sidebar,
+  span.toggle-sidebar {
+    display: none;
+  }
+}
