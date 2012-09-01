@@ -1,8 +1,10 @@
 // This File is imported last, and will override other styles in the cascade
 // Add styles here to make changes without digging in too much
 
+/*** Global Styles ***/
+
 html {
-  background: #f2f2f2;
+  background: #eeeeee;
 }
 
 body > nav,
@@ -38,15 +40,71 @@ body > footer {
 }
 
 header hgroup {
-  img {
-    float: left;
-    margin-right: 20px;
-    display: block;
-    width: 10%;
-  }
   h1,
   h2 {
-    font-family: 'Courier New';
-    text-transform: uppercase;
+    display: none;
   }
 }
+
+/* Layout */
+#main-sidebar {
+  width: 16%;
+  float: left;
+  padding: 2%;
+  ul {
+    list-style: none;
+    a {
+      color: #333;
+      text-decoration: none;
+      line-height: 35px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    &.subscription {
+      a {
+        color: #666;
+        background-color: transparent;
+        padding-left: 30px;
+      }
+    }
+  }
+  nav {
+    padding-top: 2em;
+    form {
+      display: none;
+    }
+  }
+}
+#main {
+  width: 80%;
+  float: right;
+}
+#main-footer {
+  clear: both;
+}
+
+/* Media Queries */
+@media screen and (max-width: 835px) {
+  #main-sidebar {
+    width: 190px;
+    nav ul {margin-left: 0}
+  }
+  #main {
+    width: inherit;
+    float: none;
+    margin-left: 240px;
+  }
+}
+
+
+/*** Section-specific Styles ***/
+
+#content .blog-index {
+  padding-top: 9px;
+  article h1 {
+    font-size: 2.6em;
+  }
+}
+
+

@@ -4,14 +4,14 @@
 
 $title-color: #333;
 $subtitle-color: #8e8e8e;
-$header-bg: #f2f2f2;
-$nav-bg: #f2f2f2;
+$header-bg: #eeeeee;
+$nav-bg: #eeeeee;
 $nav-bg-front: none;
-$nav-bg-back: #f2f2f2;
-$sidebar-bg: #f2f2f2;
+$nav-bg-back: #eeeeee;
+$sidebar-bg: #eeeeee;
 $sidebar-link-color: saturate(#526f9a, 10);
 $sidebar-link-color-hover: darken(#7ab662, 9);
-$footer-bg: #f2f2f2;
+$footer-bg: #eeeeee;
 $footer-bg-front: none;
 $footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($footer-bg, 11));
 
@@ -22,13 +22,13 @@ $footer-bg-back: linear-gradient(lighten($footer-bg, 8), $footer-bg, darken($foo
 // $link-color-active: adjust-color($link-color-hover, $lightness: -15) !default;
 
 // Main Section Colors
-$main-bg: #f2f2f2;
-$page-bg: #f2f2f2 !default;
+$main-bg: #eeeeee;
+$page-bg: #eeeeee !default;
 // $article-border: #eeeeee !default;
 
 // $header-bg: #333 !default;
 // $header-border: lighten($header-bg, 15) !default;
-// $title-color: #f2f2f2 !default;
+// $title-color: #eeeeee !default;
 // $subtitle-color: #aaa !default;
 
 // $text-color: #222 !default;
@@ -49,7 +49,7 @@ $nav-border: 0;
 // $nav-border-right: lighten($nav-bg, 7) !default;
 
 /* Sidebar colors */
-// $sidebar-bg: #f2f2f2 !default;
+// $sidebar-bg: #eeeeee !default;
 // $sidebar-link-color: $link-color !default;
 // $sidebar-link-color-hover: $link-color-hover !default;
 // $sidebar-link-color-active: $link-color-active !default;
@@ -63,7 +63,7 @@ $nav-border: 0;
 // $footer-color: #888 !default;
 // $footer-bg: #ccc !default;
 // $footer-bg-front: image-url('noise.png') !default;
-$footer-bg-back: #f2f2f2;
+$footer-bg-back: #eeeeee;
 // $footer-color: darken($footer-bg, 38) !default;
 // $footer-color-hover: darken($footer-color, 10) !default;
 // $footer-border-top: lighten($footer-bg, 15) !default;
