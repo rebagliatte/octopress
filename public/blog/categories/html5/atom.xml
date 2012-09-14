@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: HTML5 | CodePath]]></title>
+  <link href="http://codepath.io/blog/categories/html5/atom.xml" rel="self"/>
+  <link href="http://codepath.io/"/>
+  <updated>2012-09-14T18:43:35-03:00</updated>
+  <id>http://codepath.io/</id>
+  <author>
+    <name><![CDATA[CodePath]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Building a Game Loop]]></title>
+    <link href="http://codepath.io/blog/2012/09/14/building-a-game-loop/"/>
+    <updated>2012-09-14T17:54:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/09/14/building-a-game-loop</id>
+    <content type="html"><![CDATA[<p>Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.</p>
+
+<p>Lately I've been digging into HTML5 game development, with all the fun technologies it involved working with.
+Often, I try to make my own simple versions of frameworks, toolkits or game engines, for fun, to learn and for simplicity matters.</p>
+
+<p>The first big problem I ran into when trying to make a simple version of the old pacman game was the game loop.
+How are the ghosts supposed to move by themselves? How and when should I notify the canvas that the game changed?</p>
+
+<p>I finally came up with what I believe is an easy and simple way to run a game loop, which I've used ever since for making simplistic games.</p>
+
+<p>This is its shortened version:</p>
+
+<p>``` javascript Game Loop
+(function (pacman) {</p>
+
+<p>  var GAME_LOOP_MS = 30;</p>
+
+<p>  var Game = function () {</p>
+
+<pre><code>this.processing = false;
+this._interval = setInterval(function () { this.run(); }.bind(this), GAME_LOOP_MS);
+</code></pre>
+
+<p>  };</p>
+
+<p>  Game.prototype.doLogic = function (interval) {</p>
+
+<pre><code>// Check if player died, move ghosts, update score, etc
+</code></pre>
+
+<p>  };</p>
+
+<p>  Game.prototype.draw = function (interval) {</p>
+
+<pre><code>// Draw on canvas. (You probably want to delegate this)
+</code></pre>
+
+<p>  };</p>
+
+<p>  Game.prototype.run = function () {</p>
+
+<pre><code>var intervalTime;
+
+if (!this.processing) {
+  intervalTime = GAME_LOOP_MS * (this.skippedIntervals + 1);
+
+  this.processing = true;
+  this.doLogic(intervalTime);
+  this.draw(intervalTime);
+
+  // Resetting data
+  this.skippedIntervals = 0;
+  this.processing = false;
+}
+else {
+  this.skippedIntervals += 1;
+}
+</code></pre>
+
+<p>  };</p>
+
+<p>  pacman.Game = Game;</p>
+
+<p>})(GLOBAL_PACMAN);
+```</p>
+
+<p>This implementation won't work for hardcore games, but it does the job with games that need to be updated in really short intervals, and it's really simple to understand.
+There are also many ways to improve efficiency by using the browsers RequestAnimationFrame function.
+Thoughts?</p>
+]]></content>
+  </entry>
+  
+</feed>

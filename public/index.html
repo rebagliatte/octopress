@@ -9,9 +9,7 @@
   <meta name="author" content="CodePath">
 
   
-  <meta name="description" content="Love this!
-Bla Ruby Test1
-puts &#39;Pure awesomeness&#39; ">
+  <meta name="description" content="Since this is my first codepath post, I wanted to start talking about something we all love: games and the web. Lately I&#8217;ve been digging into &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -80,7 +78,7 @@ puts &#39;Pure awesomeness&#39; ">
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/07/18/hello-world/">Hello World</a></h1>
+      <h1 class="entry-title"><a href="/blog/2012/09/14/building-a-game-loop/">Building a Game Loop</a></h1>
     
     
       <p class="meta">
@@ -96,22 +94,109 @@ puts &#39;Pure awesomeness&#39; ">
   
 
 
-<time datetime="2012-07-18T22:04:00-03:00" pubdate data-updated="true">Jul 18<span>th</span>, 2012</time>
+<time datetime="2012-09-14T17:54:00-03:00" pubdate data-updated="true">Sep 14<span>th</span>, 2012</time>
         
       </p>
     
   </header>
 
 
-  <div class="entry-content"><p>Love this!
-Bla</p>
+  <div class="entry-content"><p>Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.</p>
 
-<figure class='code'><figcaption><span>Ruby Test</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="s1">&#39;Pure awesomeness&#39;</span>
+<p>Lately I&#8217;ve been digging into HTML5 game development, with all the fun technologies it involved working with.
+Often, I try to make my own simple versions of frameworks, toolkits or game engines, for fun, to learn and for simplicity matters.</p>
+
+<p>The first big problem I ran into when trying to make a simple version of the old pacman game was the game loop.
+How are the ghosts supposed to move by themselves? How and when should I notify the canvas that the game changed?</p>
+
+<p>I finally came up with what I believe is an easy and simple way to run a game loop, which I&#8217;ve used ever since for making simplistic games.</p>
+
+<p>This is its shortened version:</p>
+
+<figure class='code'><figcaption><span>Game Loop</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+</pre></td><td class='code'><pre><code class='javascript'><span class='line'><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">pacman</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">GAME_LOOP_MS</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="kd">var</span> <span class="nx">Game</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">processing</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="k">this</span><span class="p">.</span><span class="nx">_interval</span> <span class="o">=</span> <span class="nx">setInterval</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span> <span class="k">this</span><span class="p">.</span><span class="nx">run</span><span class="p">();</span> <span class="p">}.</span><span class="nx">bind</span><span class="p">(</span><span class="k">this</span><span class="p">),</span> <span class="nx">GAME_LOOP_MS</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">Game</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">doLogic</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">interval</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Check if player died, move ghosts, update score, etc</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">Game</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">draw</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">interval</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>    <span class="c1">// Draw on canvas. (You probably want to delegate this)</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">Game</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">run</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="kd">var</span> <span class="nx">intervalTime</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">this</span><span class="p">.</span><span class="nx">processing</span><span class="p">)</span> <span class="p">{</span>
+</span><span class='line'>      <span class="nx">intervalTime</span> <span class="o">=</span> <span class="nx">GAME_LOOP_MS</span> <span class="o">*</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">skippedIntervals</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">processing</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">doLogic</span><span class="p">(</span><span class="nx">intervalTime</span><span class="p">);</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">draw</span><span class="p">(</span><span class="nx">intervalTime</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>      <span class="c1">// Resetting data</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">skippedIntervals</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">processing</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>      <span class="k">this</span><span class="p">.</span><span class="nx">skippedIntervals</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>  <span class="p">};</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="nx">pacman</span><span class="p">.</span><span class="nx">Game</span> <span class="o">=</span> <span class="nx">Game</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">})(</span><span class="nx">GLOBAL_PACMAN</span><span class="p">);</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-
+<p>This implementation won&#8217;t work for hardcore games, but it does the job with games that need to be updated in really short intervals, and it&#8217;s really simple to understand.
+There are also many ways to improve efficiency by using the browsers RequestAnimationFrame function.
+Thoughts?</p>
 </div>
   
   
@@ -132,7 +217,7 @@ Bla</p>
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2012/07/18/hello-world/">Hello World</a>
+        <a href="/blog/2012/09/14/building-a-game-loop/">Building a Game Loop</a>
       </li>
     
   </ul>
