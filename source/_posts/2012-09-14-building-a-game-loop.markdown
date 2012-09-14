@@ -4,8 +4,9 @@ title: "Building a Game Loop"
 date: 2012-09-14 17:54
 comments: true
 sharing: true
-categories: JavaScript HTML5 Canvas
+categories: [JavaScript, HTML5, Canvas]
 author: Sebastian Borrazas
+description: How to build a simple Game loop from scratch using plain simple JavaScript?
 ---
 
 Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.
