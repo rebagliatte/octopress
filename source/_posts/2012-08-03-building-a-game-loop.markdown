@@ -19,6 +19,8 @@ How are the ghosts supposed to move by themselves? How and when should I notify 
 
 I finally came up with what I believe is an easy and simple way to run a game loop, which I've used ever since for making simplistic games.
 
+<!-- more -->
+
 This is its shortened version:
 
 ``` javascript Game Loop

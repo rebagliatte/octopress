@@ -15,6 +15,8 @@ What I love so much about it is its simple API. In my honest opinion, one of the
 
 Also, since it's a lightweight and fast key-value store, it's specially useful for speeding up slow processes on your system. If things go slow, you should always consider using Redis, if it applies, it will speed things up.
 
+<!-- more -->
+
 The Ruby gem redis is as easy to use as redis API.
 Here's a quick look of it's usage on Rails. Where there's an AR Ranking model, which stores in a sorted set a list of albums to easily get the top [n] albums.
 

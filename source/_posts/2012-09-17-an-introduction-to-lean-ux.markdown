@@ -15,6 +15,8 @@ There's been a lot of buzz around Lean UX this year. Their critics, who call it 
 
 To define what Lean UX really is we should focus on what has been left out from Traditional UX. Never changing goals are something hard to picture on a startup. Avoiding time consuming documentation in favor of a greater focus in real life metrics is key in Lean UX.
 
+<!-- more -->
+
 In traditional UX, research is something we make before the product is conceived, in Lean UX research is not just a step that gets done before or after the product development. Instead, the UX team is constantly defining user needs based on user behavior.
 
 {% blockquote Jeff Gothelf http://uxdesign.smashingmagazine.com/2011/03/07/lean-ux-getting-out-of-the-deliverables-business/ Smashing Magazine %}

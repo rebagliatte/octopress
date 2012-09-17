@@ -24,6 +24,9 @@
 
 <p>To define what Lean UX really is we should focus on what has been left out from Traditional UX. Never changing goals are something hard to picture on a startup. Avoiding time consuming documentation in favor of a greater focus in real life metrics is key in Lean UX.</p>
 
+<!-- more -->
+
+
 <p>In traditional UX, research is something we make before the product is conceived, in Lean UX research is not just a step that gets done before or after the product development. Instead, the UX team is constantly defining user needs based on user behavior.</p>
 
 <blockquote><p>The prototype now becomes your documentation. It is &#8216;the Spec.&#8217; Very little if anything more is needed</p><footer><strong>Jeff Gothelf</strong> <cite><a href='http://uxdesign.smashingmagazine.com/2011/03/07/lean-ux-getting-out-of-the-deliverables-business/'>Smashing Magazine</a></cite></footer></blockquote>
@@ -56,6 +59,9 @@ On the startup environment it&#8217;s crucial for teams to be constantly analyzi
 <p>What I love so much about it is its simple API. In my honest opinion, one of the very best API&#8217;s that I&#8217;ve found so far.</p>
 
 <p>Also, since it&#8217;s a lightweight and fast key-value store, it&#8217;s specially useful for speeding up slow processes on your system. If things go slow, you should always consider using Redis, if it applies, it will speed things up.</p>
+
+<!-- more -->
+
 
 <p>The Ruby gem redis is as easy to use as redis API.
 Here&#8217;s a quick look of it&#8217;s usage on Rails. Where there&#8217;s an AR Ranking model, which stores in a sorted set a list of albums to easily get the top [n] albums.</p>
@@ -160,6 +166,9 @@ Often, I try to make my own simple versions of frameworks, toolkits or game engi
 How are the ghosts supposed to move by themselves? How and when should I notify the canvas that the game changed?</p>
 
 <p>I finally came up with what I believe is an easy and simple way to run a game loop, which I&#8217;ve used ever since for making simplistic games.</p>
+
+<!-- more -->
+
 
 <p>This is its shortened version:</p>
 
