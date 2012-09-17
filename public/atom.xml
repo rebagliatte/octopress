@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-14T18:51:45-03:00</updated>
+  <updated>2012-09-17T16:15:32-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -14,10 +14,143 @@
 
   
   <entry>
+    <title type="html"><![CDATA[An introduction to Lean UX]]></title>
+    <link href="http://codepath.io/blog/2012/09/17/an-introduction-to-lean-ux/"/>
+    <updated>2012-09-17T13:15:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/09/17/an-introduction-to-lean-ux</id>
+    <content type="html"><![CDATA[<p><img src="http://codepath.io/images/lean-ux/lean-agile-traditional.png"></p>
+
+<p>There&#8217;s been a lot of buzz around Lean UX this year. Their critics, who call it Lazy UX, state it ignores the insights that only research provides. Those who like it, call it an UX evolution, a faster process that adapts to rapid changing market needs.</p>
+
+<p>To define what Lean UX really is we should focus on what has been left out from Traditional UX. Never changing goals are something hard to picture on a startup. Avoiding time consuming documentation in favor of a greater focus in real life metrics is key in Lean UX.</p>
+
+<p>In traditional UX, research is something we make before the product is conceived, in Lean UX research is not just a step that gets done before or after the product development. Instead, the UX team is constantly defining user needs based on user behavior.</p>
+
+<blockquote><p>The prototype now becomes your documentation. It is &#8216;the Spec.&#8217; Very little if anything more is needed</p><footer><strong>Jeff Gothelf</strong> <cite><a href='http://uxdesign.smashingmagazine.com/2011/03/07/lean-ux-getting-out-of-the-deliverables-business/'>Smashing Magazine</a></cite></footer></blockquote>
+
+
+
+
+<figure>
+  <img src="http://codepath.io/images/lean-ux/process_graphic.gif" title="'Credits: Jeff Gothelf'" >
+  <figcaption>Credits: Jess Gothelf</figcaption>
+</figure>
+
+
+<p>When you focus on the experience itself and not on documentation you can speed up the process of prototyping your concept, validating it and learn from user experience. An already known process if you&#8217;re familiar with Agile methodology. Tools like A/B testing are a great help when you need to test multiple concepts with your users.</p>
+
+<p>Lean UX is a perfect fit for the lean startup movement, regardless of your team&#8217;s methodology of choice.
+On the startup environment it&#8217;s crucial for teams to be constantly analyzing both the marketplace, and the product itself as pivoting in time can determine the success of the whole operation.</p>
+
+<p>IMHO Lean UX won&#8217;t replace traditional UX, however, it is definitely an interesting alternative for those who do not have a lot of resources available and need to validate their product/market quickly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Redis]]></title>
+    <link href="http://codepath.io/blog/2012/08/27/ruby-on-redis/"/>
+    <updated>2012-08-27T10:00:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/08/27/ruby-on-redis</id>
+    <content type="html"><![CDATA[<p>Ever since I found out about the no-sql databases and since they became very popular lately, I wanted to write a blog post about my favourite one: <a href="http://redis.io/">Redis</a>.</p>
+
+<p>What I love so much about it is its simple API. In my honest opinion, one of the very best API&#8217;s that I&#8217;ve found so far.</p>
+
+<p>Also, since it&#8217;s a lightweight and fast key-value store, it&#8217;s specially useful for speeding up slow processes on your system. If things go slow, you should always consider using Redis, if it applies, it will speed things up.</p>
+
+<p>The Ruby gem redis is as easy to use as redis API.
+Here&#8217;s a quick look of it&#8217;s usage on Rails. Where there&#8217;s an AR Ranking model, which stores in a sorted set a list of albums to easily get the top [n] albums.</p>
+
+<figure class='code'><figcaption><span>On config/initializers/redis.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># Setup the connection to the redis server</span>
+</span><span class='line'><span class="vg">$redis</span> <span class="o">=</span> <span class="no">Redis</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">host</span><span class="p">:</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="n">port</span><span class="p">:</span> <span class="mi">6379</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<figure class='code'><figcaption><span>On app/models/album_ranking.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">AlbumRanking</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">top_albums</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span class='line'>    <span class="vg">$redis</span><span class="o">.</span><span class="n">zrevrange</span><span class="p">(</span><span class="n">albums_key</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">albums</span><span class="o">=</span><span class="p">(</span><span class="n">albums</span><span class="p">)</span>
+</span><span class='line'>    <span class="vg">$redis</span><span class="o">.</span><span class="n">multi</span> <span class="k">do</span>
+</span><span class='line'>      <span class="n">remove_all_albums</span>
+</span><span class='line'>      <span class="n">albums</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">a</span><span class="o">|</span> <span class="n">add_album</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">add_album</span><span class="p">(</span><span class="n">album</span><span class="p">)</span>
+</span><span class='line'>    <span class="vg">$redis</span><span class="o">.</span><span class="n">zadd</span><span class="p">(</span><span class="n">albums_key</span><span class="p">,</span> <span class="n">album</span><span class="o">.</span><span class="n">downloads_number</span><span class="p">,</span> <span class="n">album</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">remove_album</span><span class="p">(</span><span class="n">album</span><span class="p">)</span>
+</span><span class='line'>    <span class="vg">$redis</span><span class="o">.</span><span class="n">zrem</span><span class="p">(</span><span class="n">albums_key</span><span class="p">,</span> <span class="n">album</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">remove_all_albums</span>
+</span><span class='line'>    <span class="vg">$redis</span><span class="o">.</span><span class="n">del</span><span class="p">(</span><span class="n">albums_key</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">albums_key</span>
+</span><span class='line'>    <span class="s2">&quot;album_ranking:</span><span class="si">#{</span><span class="nb">id</span><span class="si">}</span><span class="s2">:albums&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Besides keeping track of sorted elements in a fast way, there are also many other useful ways in which redis could be used.
+Here&#8217;s a list of them with a few interesting related resources:</p>
+
+<ul>
+<li>Caching resources (in XML or JSON), <a href="http://antirez.com/post/redis-as-LRU-cache.html">LRU caching</a>.</li>
+<li>Having data which automatically expires. Another excellent feature needed for LRU caching.</li>
+<li>Queues. Highly used by the <a href="https://github.com/defunkt/resque/blob/master/lib/resque/queue.rb#L29">resque gem</a></li>
+<li>Keeping highly variable counters (page views, thumbs up, etc). Here&#8217;s a <a href="http://flask.pocoo.org/snippets/71/">Flask snippet</a>.</li>
+<li>Working with large sets of data (where you don&#8217;t want repeated elements).</li>
+</ul>
+
+
+<p>Enjoy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[Building a Game Loop]]></title>
-    <link href="http://codepath.io/blog/2012/09/14/building-a-game-loop/"/>
-    <updated>2012-09-14T17:54:00-03:00</updated>
-    <id>http://codepath.io/blog/2012/09/14/building-a-game-loop</id>
+    <link href="http://codepath.io/blog/2012/08/03/building-a-game-loop/"/>
+    <updated>2012-08-03T17:54:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/08/03/building-a-game-loop</id>
     <content type="html"><![CDATA[<p>Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.</p>
 
 <p>Lately I&#8217;ve been digging into HTML5 game development, with all the fun technologies it involved working with.

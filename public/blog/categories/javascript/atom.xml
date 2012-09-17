@@ -4,7 +4,7 @@
   <title><![CDATA[Category: JavaScript | CodePath]]></title>
   <link href="http://codepath.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-14T18:51:45-03:00</updated>
+  <updated>2012-09-17T16:15:32-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[Building a Game Loop]]></title>
-    <link href="http://codepath.io/blog/2012/09/14/building-a-game-loop/"/>
-    <updated>2012-09-14T17:54:00-03:00</updated>
-    <id>http://codepath.io/blog/2012/09/14/building-a-game-loop</id>
+    <link href="http://codepath.io/blog/2012/08/03/building-a-game-loop/"/>
+    <updated>2012-08-03T17:54:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/08/03/building-a-game-loop</id>
     <content type="html"><![CDATA[<p>Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.</p>
 
 <p>Lately I've been digging into HTML5 game development, with all the fun technologies it involved working with.

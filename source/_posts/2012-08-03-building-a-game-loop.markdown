@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Building a Game Loop"
-date: 2012-09-14 17:54
+date: 2012-08-03 17:54
 comments: true
 sharing: true
 categories: [JavaScript, HTML5, Canvas, Games]

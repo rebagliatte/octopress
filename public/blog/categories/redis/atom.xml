@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: redis | CodePath]]></title>
+  <link href="http://codepath.io/blog/categories/redis/atom.xml" rel="self"/>
+  <link href="http://codepath.io/"/>
+  <updated>2012-09-17T16:15:32-03:00</updated>
+  <id>http://codepath.io/</id>
+  <author>
+    <name><![CDATA[CodePath]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby on Redis]]></title>
+    <link href="http://codepath.io/blog/2012/08/27/ruby-on-redis/"/>
+    <updated>2012-08-27T10:00:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/08/27/ruby-on-redis</id>
+    <content type="html"><![CDATA[<p>Ever since I found out about the no-sql databases and since they became very popular lately, I wanted to write a blog post about my favourite one: <a href="http://redis.io/">Redis</a>.</p>
+
+<p>What I love so much about it is its simple API. In my honest opinion, one of the very best API's that I've found so far.</p>
+
+<p>Also, since it's a lightweight and fast key-value store, it's specially useful for speeding up slow processes on your system. If things go slow, you should always consider using Redis, if it applies, it will speed things up.</p>
+
+<p>The Ruby gem redis is as easy to use as redis API.
+Here's a quick look of it's usage on Rails. Where there's an AR Ranking model, which stores in a sorted set a list of albums to easily get the top [n] albums.</p>
+
+<p>``` ruby On config/initializers/redis.rb</p>
+
+<h1>Setup the connection to the redis server</h1>
+
+<p>$redis = Redis.new(host: 'localhost', port: 6379)
+```</p>
+
+<p>``` ruby On app/models/album_ranking.rb
+class AlbumRanking &lt; ActiveRecord::Base</p>
+
+<p>  def top_albums(n)</p>
+
+<pre><code>$redis.zrevrange(albums_key, 0, n - 1)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def albums=(albums)</p>
+
+<pre><code>$redis.multi do
+  remove_all_albums
+  albums.each {|a| add_album(a) }
+end
+</code></pre>
+
+<p>  end</p>
+
+<p>  def add_album(album)</p>
+
+<pre><code>$redis.zadd(albums_key, album.downloads_number, album.id)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def remove_album(album)</p>
+
+<pre><code>$redis.zrem(albums_key, album.id)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def remove_all_albums</p>
+
+<pre><code>$redis.del(albums_key)
+</code></pre>
+
+<p>  end</p>
+
+<p>  def albums_key</p>
+
+<pre><code>"album_ranking:#{id}:albums"
+</code></pre>
+
+<p>  end
+end
+```</p>
+
+<p>Besides keeping track of sorted elements in a fast way, there are also many other useful ways in which redis could be used.
+Here's a list of them with a few interesting related resources:</p>
+
+<ul>
+<li>Caching resources (in XML or JSON), <a href="http://antirez.com/post/redis-as-LRU-cache.html">LRU caching</a>.</li>
+<li>Having data which automatically expires. Another excellent feature needed for LRU caching.</li>
+<li>Queues. Highly used by the <a href="https://github.com/defunkt/resque/blob/master/lib/resque/queue.rb#L29">resque gem</a></li>
+<li>Keeping highly variable counters (page views, thumbs up, etc). Here's a <a href="http://flask.pocoo.org/snippets/71/">Flask snippet</a>.</li>
+<li>Working with large sets of data (where you don't want repeated elements).</li>
+</ul>
+
+
+<p>Enjoy!</p>
+]]></content>
+  </entry>
+  
+</feed>
