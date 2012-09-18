@@ -4,7 +4,7 @@ title: "An introduction to Lean UX"
 date: 2012-09-17 13:15
 comments: true
 sharing: true
-categories: [leanux, ux, design]
+categories: [ux, design]
 author: Santiago Alonso
 description: Defining Lean UX to focus on what has been left out from Traditional UX
 ---

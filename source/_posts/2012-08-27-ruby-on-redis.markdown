@@ -4,7 +4,7 @@ title: "Ruby on Redis"
 date: 2012-08-27 10:00
 comments: true
 sharing: true
-categories: [Ruby, redis, caching]
+categories: [ruby, redis]
 author: Sebastian Borrazas
 description: Easy introduction to Redis gem on a Ruby project
 ---
