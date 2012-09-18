@@ -39,6 +39,13 @@ body > footer {
   }
 }
 
+figcaption {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 2em;
+  font-size: 0.9em;
+}
+
 header hgroup {
   h1,
   h2 {
@@ -87,12 +94,75 @@ header hgroup {
 
 /*** Section-specific Styles ***/
 
+/* Home */
 #content .blog-index {
   padding-top: 9px;
   article h1 {
     font-size: 2.6em;
   }
 }
+
+/* About */
+.team {
+  margin-left: 0;
+  li {
+    list-style: none;
+    width: 49%;
+    margin-right: 2%;
+    float: left;
+    clear: both;
+    .role {
+      color: #e0460a;
+      &:before {
+        content: "/ ";
+      }
+    }
+    &.even {
+      margin-right: 0;
+      float: right;
+      clear: none;
+    }
+    .short-desc {
+      clear: both;
+    }
+    p {
+      margin-bottom: 1em;
+    }
+    .contact {
+      margin: 0 0 1em 0;
+      height: 30px;
+      li {
+        width: auto;
+        clear: none;
+        float: left;
+      }
+      a {
+        background: transparent url(/images/icons.png) top left no-repeat;
+        display: block;
+        width: 30px;
+        height: 30px;
+
+        span {
+          display: none;
+        }
+      }
+      /* social icons */
+      li.github a {background-position: -43px 0;}
+      li.dribble a {background-position: -85px 0;}
+      li.linkedin a {background-position: -128px 0;}
+      li.website a {background-position: -170px 0;}
+
+      /* hover states */
+      li.twitter a:hover {background-position: 0 -60px;}
+      li.github a:hover {background-position: -43px -60px;}
+      li.dribble a:hover {background-position: -85px -60px;}
+      li.linkedin a:hover {background-position: -128px -60px;}
+      li.website a:hover {background-position: -170px -60px;}
+    }
+  }
+}
+
+
 
 /* Media Queries */
 @media screen and (max-width: 835px) {
@@ -104,6 +174,13 @@ header hgroup {
     width: inherit;
     float: none;
     margin-left: 240px;
+  }
+  .team li {
+    width: 100%;
+    margin: 0;
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -145,11 +222,3 @@ header hgroup {
     margin: 0;
   }
 }
-
-figcaption {
-  color: #666;
-  font-style: italic;
-  margin-bottom: 2em;
-  font-size: 0.9em;
-}
-
