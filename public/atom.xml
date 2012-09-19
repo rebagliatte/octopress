@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-18T23:23:04-03:00</updated>
+  <updated>2012-09-18T23:38:24-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -130,7 +130,7 @@ receives a progress update.</li>
 
 <h2>Chaining <em>then()</em> calls</h2>
 
-<p><em>then()</em> returns a new <em>Promise</em>, so you can easily chain many ´then()´
+<p><em>then()</em> returns a new <em>Promise</em>, so you can easily chain many <em>then()</em>
 calls or pass the promise to other contexts which may add their own
 callbacks (and this detail is key for understanding the power of
 promises).</p>

@@ -7,9 +7,6 @@ single: true
 <article class="hentry" role="article">
   {% include article.html %}
   <footer>
-    <p class="meta">
-      <strong>Categories:</strong> {% include post/categories.html %}
-    </p>
     {% unless page.sharing == false %}
       {% include post/sharing.html %}
     {% endunless %}

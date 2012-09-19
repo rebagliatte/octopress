@@ -107,7 +107,7 @@ want to be run once the deferred is fulfilled.
 Chaining *then()* calls
 -----------------------
 
-*then()* returns a new *Promise*, so you can easily chain many ´then()´
+*then()* returns a new *Promise*, so you can easily chain many *then()*
 calls or pass the promise to other contexts which may add their own
 callbacks (and this detail is key for understanding the power of
 promises).

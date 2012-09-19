@@ -3,6 +3,8 @@
 
 /*** Global Styles ***/
 
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans);
+
 html {
   background: #eeeeee;
 }
@@ -15,7 +17,6 @@ body > nav li + li a {
 
 body,
 body > nav a,
-body > header h1, h1, h2, h3, h4, h5, h6,
 .heading,
 .sans,
 body > header h2,
@@ -27,6 +28,10 @@ html .gist .gist-file .gist-meta,
 #blog-archives time,
 aside.sidebar section,
 body > footer {
+  font-family: 'Quattrocento Sans', Helvetica, Arial, "Helvetica Neue", sans-serif;
+}
+
+body > header h1, h1, h2, h3, h4, h5, h6 {
   font-family: Helvetica, Arial, "Helvetica Neue", sans-serif;
 }
 
@@ -52,6 +57,17 @@ header hgroup {
     display: none;
   }
 }
+article header p.meta {
+  position: relative;
+  text-transform: none;
+  a {
+    color: #777;
+    &:hover {
+      color: black;
+    }
+  }
+}
+
 
 /* Layout */
 #main-sidebar {
