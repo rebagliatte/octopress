@@ -4,7 +4,7 @@
   <title><![CDATA[Category: javascript | CodePath]]></title>
   <link href="http://codepath.io/blog/categories/javascript/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-18T23:38:24-03:00</updated>
+  <updated>2012-09-19T01:24:32-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -74,10 +74,10 @@ when the promise is resolved (and the result becomes available).</p>
         allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
 
-<p>A Deferred object can be in one of three statuses at any given time:
+<p>A Deferred object can be in one of three states at any given time:
 <em>in progress</em> (or unfulfilled), <em>resolved</em> or <em>rejected</em>. It can only
 go from <em>in progress</em> to <em>resolved</em> or from <em>in progress</em> to
-<em>rejected</em>. This methods allow us to make these status transitions:</p>
+<em>rejected</em>. This method allow us to make these status transitions:</p>
 
 <ul>
 <li><em><strong>resolve</strong>(value, strict)</em>: This method will be called to inform
@@ -130,7 +130,7 @@ receives a progress update.</li>
 
 <h2>Chaining <em>then()</em> calls</h2>
 
-<p><em>then()</em> returns a new <em>Promise</em>, so you can easily chain many <em>then()</em>
+<p><em>then()</em> returns a new <em>Promise</em>, so you can easily chain many <em>then()</em>g
 calls or pass the promise to other contexts which may add their own
 callbacks (and this detail is key for understanding the power of
 promises).</p>
@@ -233,7 +233,7 @@ ones are:</p>
 to have cleaner and intuitive APIs, just saying this method returns a
 promise is enough.</p>
 
-<p>If you have used libraries like jquery I bet you had to go back to the
+<p>If you have used libraries like jQuery I bet you had to go back to the
 docs more than once to check async functions signatures, is the success
 callback is the first or second param? What key does the param object
 param expects? was it "complete", "onComplete", "success"?.</p>
@@ -248,8 +248,8 @@ see fit.</p>
 or query the current status of the promise in a modular way, without
 affecting the original deferred.</p>
 
-<p>From the implementing side you don't have to think about how to call
-the callback, it's just a matter of create the promise and manage it's
+<p>From the "async" side you don't have to think about how to call the
+callback, it's just a matter of create the promise and manage it's
 states, what happens then is not it's business.</p>
 
 <h3>Composable</h3>

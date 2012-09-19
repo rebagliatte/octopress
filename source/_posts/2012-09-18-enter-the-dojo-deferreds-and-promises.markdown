@@ -63,10 +63,10 @@ when the promise is resolved (and the result becomes available).
         src="http://jsfiddle.net/gonz/2R3Af/embedded/js,html,result/"
         allowfullscreen="allowfullscreen" frameborder="0"></iframe>
 
-A Deferred object can be in one of three statuses at any given time:
+A Deferred object can be in one of three states at any given time:
 *in progress* (or unfulfilled), *resolved* or *rejected*. It can only
 go from *in progress* to *resolved* or from *in progress* to
-*rejected*. This methods allow us to make these status transitions:
+*rejected*. This method allow us to make these status transitions:
 
 * ***resolve**(value, strict)*: This method will be called to inform
   the deferred that the async task finished successfully, this will
@@ -107,7 +107,7 @@ want to be run once the deferred is fulfilled.
 Chaining *then()* calls
 -----------------------
 
-*then()* returns a new *Promise*, so you can easily chain many *then()*
+*then()* returns a new *Promise*, so you can easily chain many *then()*g
 calls or pass the promise to other contexts which may add their own
 callbacks (and this detail is key for understanding the power of
 promises).
@@ -206,7 +206,7 @@ Not having to pollute function signatures with callback params allows
 to have cleaner and intuitive APIs, just saying this method returns a
 promise is enough.
 
-If you have used libraries like jquery I bet you had to go back to the
+If you have used libraries like jQuery I bet you had to go back to the
 docs more than once to check async functions signatures, is the success
 callback is the first or second param? What key does the param object
 param expects? was it "complete", "onComplete", "success"?.
@@ -221,8 +221,8 @@ You can pass promises around your modules where each can add callbacks
 or query the current status of the promise in a modular way, without
 affecting the original deferred.
 
-From the implementing side you don't have to think about how to call
-the callback, it's just a matter of create the promise and manage it's
+From the "async" side you don't have to think about how to call the
+callback, it's just a matter of create the promise and manage it's
 states, what happens then is not it's business.
 
 
