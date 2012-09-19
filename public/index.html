@@ -9,7 +9,9 @@
   <meta name="author" content="CodePath">
 
   
-  <meta name="description" content="There&#8217;s been a lot of buzz around Lean UX this year. Their critics, who call it Lazy UX, state it ignores the insights that only research &hellip;">
+  <meta name="description" content="If you&#8217;ve been working with javascript long enough, you probably have
+faced a very common asynchronous programming challenge many times:
+Having &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -74,6 +76,84 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/">Enter the Dojo: Deferreds and Promises</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Gonz Saavedra</span></span>
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T17:23:00-03:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>If you&#8217;ve been working with javascript long enough, you probably have
+faced a very common asynchronous programming challenge many times:
+<em>Having to execute code after an asynchronous task finishes</em>.</p>
+
+<p>A common solution is to use <em>callbacks</em>, just passing one or more
+functions to the asynchronous task so it can call them when the result
+is available. Unfortunately as the problems get more complex, like
+having different callbacks for handling success/error results, nested
+async tasks (and callbacks), tracking progress, communication between
+callbacks themselves or all of them together things start to get ugly,
+code usually becomes much harder to maintain, errors are harder to
+handle, etc&#8230;</p>
+
+<p>In fact this problem is so common in the javascript world that
+<a href="https://github.com/joyent/node/wiki/modules#wiki-async-flow" title="Control flow/async modules">many implemented solutions</a> exist and a lot  those use promises
+or other similar concepts.</p>
+
+<p><strong>Promises are a simple solution found in many concurrent languages
+that provide an effective and efficient way for handling and compose
+concurrent tasks</strong>.</p>
+
+<p>The idea is that instead of having the main task passing the callback
+to the async task so it can then call it, responsibilities are
+flipped: the async task creates and returns a promise (a proxy object)
+that allows the main task to bind one or many callbacks. These
+callbacks will be automatically executed when the result of the async
+task is available.</p>
+
+<p>This approach has many advantages over good ol&#8217; callbacks, I&#8217;ll try to
+elaborate on this here while introducing dojo promises implementation
+(v1.8). Note that most of what&#8217;s discussed here applies to other
+implementations, specially the ones that follow
+<a href="http://wiki.commonjs.org/wiki/Promises/A" title="CommonJS Promises/A">Promises/A CommonJS proposal</a>.</p>
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -240,6 +320,10 @@ How are the ghosts supposed to move by themselves? How and when should I notify 
     <section>
   <h1>Recent Posts</h1>
   <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/">Enter the dojo: Deferreds and promises</a>
+      </li>
     
       <li class="post">
         <a href="/blog/2012/09/17/an-introduction-to-lean-ux/">An introduction to Lean UX</a>

@@ -1,24 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: javascript | CodePath]]></title>
-  <link href="http://codepath.io/blog/categories/javascript/atom.xml" rel="self"/>
-  <link href="http://codepath.io/"/>
-  <updated>2012-09-18T23:23:04-03:00</updated>
-  <id>http://codepath.io/</id>
-  <author>
-    <name><![CDATA[CodePath]]></name>
-    
-  </author>
-  <generator uri="http://octopress.org/">Octopress</generator>
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Enter the dojo: Deferreds and promises - CodePath</title>
+  <meta name="author" content="CodePath">
 
   
-  <entry>
-    <title type="html"><![CDATA[Enter the dojo: Deferreds and promises]]></title>
-    <link href="http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/"/>
-    <updated>2012-09-18T17:23:00-03:00</updated>
-    <id>http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises</id>
-    <content type="html"><![CDATA[<p>If you've been working with javascript long enough, you probably have
+  <meta name="description" content="If you&#8217;ve been working with javascript long enough, you probably have
+faced a very common asynchronous programming challenge many times:
+Having &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="google-site-verification" content="HcL8ianrVNCidowDQmEN8iG3ESVslOxe9Pb96t8MlkE" />
+
+  
+  <link rel="canonical" href="http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/">
+  <link href="/favicon.ico" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="CodePath" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <div id="main-sidebar">
+    <header role="banner"><hgroup>
+  <a href="/">
+    <img src="/images/codepath.jpg" alt="CodePath Logo">
+  </a>
+  <h1><a href="/">CodePath</a></h1>
+  
+    <h2>Handcrafting awesomeness</h2>
+  
+</hgroup>
+
+</header>
+    <nav role="navigation">
+  <form action="http://google.com/search" method="get">
+    <fieldset role="search">
+      <input type="hidden" name="q" value="site:codepath.io" />
+      <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+    </fieldset>
+  </form>
+
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/about/">About us</a></li>
+</ul>
+
+
+<ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+</nav>
+  </div>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Enter the Dojo: Deferreds and Promises</h1>
+    
+    
+      <p class="meta">
+        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Gonz Saavedra</span></span>
+ -
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T17:23:00-03:00" pubdate data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>If you&#8217;ve been working with javascript long enough, you probably have
 faced a very common asynchronous programming challenge many times:
 <em>Having to execute code after an asynchronous task finishes</em>.</p>
 
@@ -29,7 +118,7 @@ having different callbacks for handling success/error results, nested
 async tasks (and callbacks), tracking progress, communication between
 callbacks themselves or all of them together things start to get ugly,
 code usually becomes much harder to maintain, errors are harder to
-handle, etc...</p>
+handle, etc&#8230;</p>
 
 <p>In fact this problem is so common in the javascript world that
 <a href="https://github.com/joyent/node/wiki/modules#wiki-async-flow" title="Control flow/async modules">many implemented solutions</a> exist and a lot  those use promises
@@ -46,9 +135,9 @@ that allows the main task to bind one or many callbacks. These
 callbacks will be automatically executed when the result of the async
 task is available.</p>
 
-<p>This approach has many advantages over good ol' callbacks, I'll try to
+<p>This approach has many advantages over good ol&#8217; callbacks, I&#8217;ll try to
 elaborate on this here while introducing dojo promises implementation
-(v1.8). Note that most of what's discussed here applies to other
+(v1.8). Note that most of what&#8217;s discussed here applies to other
 implementations, specially the ones that follow
 <a href="http://wiki.commonjs.org/wiki/Promises/A" title="CommonJS Promises/A">Promises/A CommonJS proposal</a>.</p>
 
@@ -82,7 +171,7 @@ go from <em>in progress</em> to <em>resolved</em> or from <em>in progress</em> t
 <ul>
 <li><em><strong>resolve</strong>(value, strict)</em>: This method will be called to inform
 the deferred that the async task finished successfully, this will
-fire all the success callbacks added to it's promises through the
+fire all the success callbacks added to it&#8217;s promises through the
 <em>then()</em> method.
 
 <ul>
@@ -106,7 +195,7 @@ calling isResolved(), isRejected(), isFulfilled().</p>
 <p>As can see in the example above <em>runAsync()</em> function returns the
 <em>promise</em> attribute of the <em>Deferred</em> object, this is a
 <em>dojo/promises/Promise</em> object that shares the <em>then()</em> method (and
-it's context) with the deferred, so when adding new callbacks through
+it&#8217;s context) with the deferred, so when adding new callbacks through
 the promise they will be available for the main deferred object
 to call.</p>
 
@@ -149,7 +238,7 @@ it, as a simple uni-directional simple communication system between them.</p>
 
 <h2>Progress updates</h2>
 
-<p>A great feature of dojo's deferreds/promises are progress callbacks,
+<p>A great feature of dojo&#8217;s deferreds/promises are progress callbacks,
 They allow the consumer code to get progress updates from the async
 process.</p>
 
@@ -179,7 +268,7 @@ progback functions added using then():</p>
 
 <p>You can also cancel a deferred from the consumer side by calling the
 <em>cancel()</em> method on a <em>Promise</em> object. Note that cancelling
-behaviour has to be implemented on the deferred since it doesn't
+behaviour has to be implemented on the deferred since it doesn&#8217;t
 always makes sense to support that.</p>
 
 <iframe style="width: 100%; height: 300px"
@@ -236,7 +325,7 @@ promise is enough.</p>
 <p>If you have used libraries like jquery I bet you had to go back to the
 docs more than once to check async functions signatures, is the success
 callback is the first or second param? What key does the param object
-param expects? was it "complete", "onComplete", "success"?.</p>
+param expects? was it &#8220;complete&#8221;, &#8220;onComplete&#8221;, &#8220;success&#8221;?.</p>
 
 <h3>Modular</h3>
 
@@ -248,9 +337,9 @@ see fit.</p>
 or query the current status of the promise in a modular way, without
 affecting the original deferred.</p>
 
-<p>From the implementing side you don't have to think about how to call
-the callback, it's just a matter of create the promise and manage it's
-states, what happens then is not it's business.</p>
+<p>From the implementing side you don&#8217;t have to think about how to call
+the callback, it&#8217;s just a matter of create the promise and manage it&#8217;s
+states, what happens then is not it&#8217;s business.</p>
 
 <h3>Composable</h3>
 
@@ -259,12 +348,12 @@ resulting code is very clean and intuitive. <em>then()</em> chaining,
 <em>all()</em> and <em>first()</em> are great examples, and you can also easily
 define your own logic to get a new promise from other(s).</p>
 
-<p>With <em>callbacks</em> solution defining several serial callbacks it's a
+<p>With <em>callbacks</em> solution defining several serial callbacks it&#8217;s a
 mess, I have seen those awfully nested functions too many times, of
 course you can arrange the code to avoid nesting things too much but
 the complexity to follow the code is the same: too high and the worst
 thing: each function is responsible to call the next. With promises
-you just would chain <em>then()</em> calls each function doesn't know
+you just would chain <em>then()</em> calls each function doesn&#8217;t know
 anything about the others.</p>
 
 <h2>Resources</h2>
@@ -279,87 +368,121 @@ anything about the others.</p>
 <li><a href="http://www.slideshare.net/domenicdenicola/callbacks-promises-and-coroutines-oh-my-the-evolution-of-asynchronicity-in-javascript" title="Callbacks, Promises, and Coroutines (oh my!): Asynchronous Programming Patterns in JavaScript">Callbacks, Promises, and Coroutines (oh my!): Asynchronous Programming Patterns in JavaScript</a></li>
 </ul>
 
-]]></content>
-  </entry>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      <strong>Categories:</strong> 
+
+<span class="categories">
   
-  <entry>
-    <title type="html"><![CDATA[Building a Game Loop]]></title>
-    <link href="http://codepath.io/blog/2012/08/03/building-a-game-loop/"/>
-    <updated>2012-08-03T17:54:00-03:00</updated>
-    <id>http://codepath.io/blog/2012/08/03/building-a-game-loop</id>
-    <content type="html"><![CDATA[<p>Since this is my first codepath post, I wanted to start talking about something we all love: games and the web.</p>
-
-<p>Lately I've been digging into HTML5 game development, with all the fun technologies it involved working with.
-Often, I try to make my own simple versions of frameworks, toolkits or game engines, for fun, to learn and for simplicity matters.</p>
-
-<p>The first big problem I ran into when trying to make a simple version of the old pacman game was the game loop.
-How are the ghosts supposed to move by themselves? How and when should I notify the canvas that the game changed?</p>
-
-<p>I finally came up with what I believe is an easy and simple way to run a game loop, which I've used ever since for making simplistic games.</p>
-
-<!-- more -->
-
-
-<p>This is its shortened version:</p>
-
-<p>``` javascript Game Loop
-(function (pacman) {</p>
-
-<p>  var GAME_LOOP_MS = 30;</p>
-
-<p>  var Game = function () {</p>
-
-<pre><code>this.processing = false;
-this._interval = setInterval(function () { this.run(); }.bind(this), GAME_LOOP_MS);
-</code></pre>
-
-<p>  };</p>
-
-<p>  Game.prototype.doLogic = function (interval) {</p>
-
-<pre><code>// Check if player died, move ghosts, update score, etc
-</code></pre>
-
-<p>  };</p>
-
-<p>  Game.prototype.draw = function (interval) {</p>
-
-<pre><code>// Draw on canvas. (You probably want to delegate this)
-</code></pre>
-
-<p>  };</p>
-
-<p>  Game.prototype.run = function () {</p>
-
-<pre><code>var intervalTime;
-
-if (!this.processing) {
-  intervalTime = GAME_LOOP_MS * (this.skippedIntervals + 1);
-
-  this.processing = true;
-  this.doLogic(intervalTime);
-  this.draw(intervalTime);
-
-  // Resetting data
-  this.skippedIntervals = 0;
-  this.processing = false;
-}
-else {
-  this.skippedIntervals += 1;
-}
-</code></pre>
-
-<p>  };</p>
-
-<p>  pacman.Game = Game;</p>
-
-<p>})(GLOBAL_PACMAN);
-```</p>
-
-<p>This implementation won't work for hardcore games, but it does the job with games that need to be updated in really short intervals, and it's really simple to understand.
-There are also many ways to improve efficiency by using the browsers RequestAnimationFrame function.
-Thoughts?</p>
-]]></content>
-  </entry>
+    <a class='category' href='/blog/categories/dojo/'>dojo</a>, <a class='category' href='/blog/categories/javascript/'>javascript</a>
   
-</feed>
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/" data-via="" data-counturl="http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/">Enter the dojo: Deferreds and promises</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/09/17/an-introduction-to-lean-ux/">An introduction to Lean UX</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/27/ruby-on-redis/">Ruby on Redis</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2012/08/03/building-a-game-loop/">Building a Game Loop</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer id="main-footer" role="contentinfo"><p>
+  Copyright &copy; 2012 - CodePath -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'codepathteam';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/';
+        var disqus_url = 'http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

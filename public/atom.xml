@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-18T18:54:26-03:00</updated>
+  <updated>2012-09-18T23:23:04-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -12,6 +12,275 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Enter the dojo: Deferreds and promises]]></title>
+    <link href="http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises/"/>
+    <updated>2012-09-18T17:23:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/09/18/enter-the-dojo-deferreds-and-promises</id>
+    <content type="html"><![CDATA[<p>If you&#8217;ve been working with javascript long enough, you probably have
+faced a very common asynchronous programming challenge many times:
+<em>Having to execute code after an asynchronous task finishes</em>.</p>
+
+<p>A common solution is to use <em>callbacks</em>, just passing one or more
+functions to the asynchronous task so it can call them when the result
+is available. Unfortunately as the problems get more complex, like
+having different callbacks for handling success/error results, nested
+async tasks (and callbacks), tracking progress, communication between
+callbacks themselves or all of them together things start to get ugly,
+code usually becomes much harder to maintain, errors are harder to
+handle, etc&#8230;</p>
+
+<p>In fact this problem is so common in the javascript world that
+<a href="https://github.com/joyent/node/wiki/modules#wiki-async-flow" title="Control flow/async modules">many implemented solutions</a> exist and a lot  those use promises
+or other similar concepts.</p>
+
+<p><strong>Promises are a simple solution found in many concurrent languages
+that provide an effective and efficient way for handling and compose
+concurrent tasks</strong>.</p>
+
+<p>The idea is that instead of having the main task passing the callback
+to the async task so it can then call it, responsibilities are
+flipped: the async task creates and returns a promise (a proxy object)
+that allows the main task to bind one or many callbacks. These
+callbacks will be automatically executed when the result of the async
+task is available.</p>
+
+<p>This approach has many advantages over good ol&#8217; callbacks, I&#8217;ll try to
+elaborate on this here while introducing dojo promises implementation
+(v1.8). Note that most of what&#8217;s discussed here applies to other
+implementations, specially the ones that follow
+<a href="http://wiki.commonjs.org/wiki/Promises/A" title="CommonJS Promises/A">Promises/A CommonJS proposal</a>.</p>
+
+<!-- more -->
+
+
+<h2>Dojo Deferreds basics</h2>
+
+<p>In the dojo toolkit the <em>dojo/Deferred</em> module defines the <em>Deferred</em>
+class which along other modules in <em>dojo/promises</em> allow communication
+between async tasks using the promises concept. Many dojo modules rely
+on deferreds for their async communication, probably the best example
+is the <em>dojo/request</em> module it can be used by your own modules as
+well.</p>
+
+<p>Code first, a simple example to demonstrate how you can create a
+Deferred object in a async process and return a promise to the
+consumer, who will be able to add a callback which will be executed
+when the promise is resolved (and the result becomes available).</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/2R3Af/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<p>A Deferred object can be in one of three statuses at any given time:
+<em>in progress</em> (or unfulfilled), <em>resolved</em> or <em>rejected</em>. It can only
+go from <em>in progress</em> to <em>resolved</em> or from <em>in progress</em> to
+<em>rejected</em>. This methods allow us to make these status transitions:</p>
+
+<ul>
+<li><em><strong>resolve</strong>(value, strict)</em>: This method will be called to inform
+the deferred that the async task finished successfully, this will
+fire all the success callbacks added to it&#8217;s promises through the
+<em>then()</em> method.
+
+<ul>
+<li><em>value</em> usually holds a result from the async tasks which will be
+passed to the first callback as it param.</li>
+<li><em>strict</em> is a boolean, when set to true makes the call raise
+an exception if the deferred is already fulfilled. Defaults to
+<em>false</em>.</li>
+</ul>
+</li>
+<li><em><strong>reject</strong>(value, strict)</em>: Will be called when the async process
+had some kind of error, all error callbacks functions will be
+called. <em>value</em> and <em>strict</em> params work like the ones described for
+<em>resolve()</em> above.</li>
+</ul>
+
+
+<p>You can check the current status of a deferred (or it promises) by
+calling isResolved(), isRejected(), isFulfilled().</p>
+
+<p>As can see in the example above <em>runAsync()</em> function returns the
+<em>promise</em> attribute of the <em>Deferred</em> object, this is a
+<em>dojo/promises/Promise</em> object that shares the <em>then()</em> method (and
+it&#8217;s context) with the deferred, so when adding new callbacks through
+the promise they will be available for the main deferred object
+to call.</p>
+
+<p>As you can guess <em>then()</em> is how we add callbacks with the code we
+want to be run once the deferred is fulfilled.</p>
+
+<ul>
+<li><em><strong>then</strong>(callback, errback, progback)</em>: Add callbacks to
+
+<ul>
+<li><em>callback</em> is a function that will be called when the deferred is
+resolved (finishes successfully).</li>
+<li><em>errback</em> is an optional function that will be called when the
+deferred is rejected.</li>
+<li><em>progback</em> is an optional function will be called when the deferred
+receives a progress update.</li>
+</ul>
+</li>
+</ul>
+
+
+<h2>Chaining <em>then()</em> calls</h2>
+
+<p><em>then()</em> returns a new <em>Promise</em>, so you can easily chain many ´then()´
+calls or pass the promise to other contexts which may add their own
+callbacks (and this detail is key for understanding the power of
+promises).</p>
+
+<p>An important detail here is that the callback added first (whether is
+a sucess, error or progress callback) will get the result sent by the
+<em>resolve()</em>/<em>reject()</em>/<em>progress()</em> call as its first param, the
+return value of a callbacks is what the next callback in the <em>then()</em>
+chain will recieve as first param, allowing callbacks modify or extend
+it, as a simple uni-directional simple communication system between them.</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/7JdjB/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h2>Progress updates</h2>
+
+<p>A great feature of dojo&#8217;s deferreds/promises are progress callbacks,
+They allow the consumer code to get progress updates from the async
+process.</p>
+
+<p><em>Deferred</em> defines the progress() method, which will call all
+progback functions added using then():</p>
+
+<ul>
+<li><em><strong>progress</strong>(value, strict)</em>
+
+<ul>
+<li><em>update</em> is passed along to the progress callbacks added through
+<em>then()</em>.</li>
+<li><em>strict</em> works like <em>resolve()</em> and <em>reject()</em> methods strict param.</li>
+</ul>
+</li>
+</ul>
+
+
+<p>Take a look at this simple but cool example that make use of this feature:</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/g7ELP/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h2>Cancelling async processes</h2>
+
+<p>You can also cancel a deferred from the consumer side by calling the
+<em>cancel()</em> method on a <em>Promise</em> object. Note that cancelling
+behaviour has to be implemented on the deferred since it doesn&#8217;t
+always makes sense to support that.</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/TNZHd/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<p>As you can see in this example the cancel behaviour for the deferred
+is implemented passing a function to the <em>Deferred</em> constructor
+function, and later called after the <em>cancel()</em> call in the consumer
+side <em>Promise</em> object.</p>
+
+<h2>Composing promises</h2>
+
+<p>Dojo also provide two very useful modules for composing promises:
+<em>dojo/promises/all</em> and <em>dojo/promises/first</em>.</p>
+
+<p><em>dojo/promises/all</em> receives multiple promises and returns a new
+promise that will become fullfilled once all of the given promises are
+fullfilled.</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/65hdt/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<p>As you can see in the example the promise created by <em>all()</em> recieves
+as first param an array of the results ordered in the same order we
+passed the original promises. Alternatively you could pass it an
+object using some keys to identify each value promise, the <em>then()</em>
+callback would also recieve an object with the results in
+corresponding key.</p>
+
+<p>Similarly <em>dojo/promises/first</em> takes many promises and returns a new
+promise that will become resolved as soon as any of the orginal promises
+gets resolved.</p>
+
+<iframe style="width: 100%; height: 300px"
+        src="http://jsfiddle.net/gonz/VhESK/embedded/js,html,result/"
+        allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+
+
+<h2>Why promises are better?</h2>
+
+<p><em>Promises</em> are an awesome solution for many reasons, for me the main
+ones are:</p>
+
+<h3>Simple APIs</h3>
+
+<p>Not having to pollute function signatures with callback params allows
+to have cleaner and intuitive APIs, just saying this method returns a
+promise is enough.</p>
+
+<p>If you have used libraries like jquery I bet you had to go back to the
+docs more than once to check async functions signatures, is the success
+callback is the first or second param? What key does the param object
+param expects? was it &#8220;complete&#8221;, &#8220;onComplete&#8221;, &#8220;success&#8221;?.</p>
+
+<h3>Modular</h3>
+
+<p>From the consumer perspective this approach makes things much flexible,
+you can create as many callbacks as you want and compose them as you
+see fit.</p>
+
+<p>You can pass promises around your modules where each can add callbacks
+or query the current status of the promise in a modular way, without
+affecting the original deferred.</p>
+
+<p>From the implementing side you don&#8217;t have to think about how to call
+the callback, it&#8217;s just a matter of create the promise and manage it&#8217;s
+states, what happens then is not it&#8217;s business.</p>
+
+<h3>Composable</h3>
+
+<p>As you saw above you can compose promises in useful ways and the
+resulting code is very clean and intuitive. <em>then()</em> chaining,
+<em>all()</em> and <em>first()</em> are great examples, and you can also easily
+define your own logic to get a new promise from other(s).</p>
+
+<p>With <em>callbacks</em> solution defining several serial callbacks it&#8217;s a
+mess, I have seen those awfully nested functions too many times, of
+course you can arrange the code to avoid nesting things too much but
+the complexity to follow the code is the same: too high and the worst
+thing: each function is responsible to call the next. With promises
+you just would chain <em>then()</em> calls each function doesn&#8217;t know
+anything about the others.</p>
+
+<h2>Resources</h2>
+
+<ul>
+<li><a href="http://dojotoolkit.org/reference-guide/1.8/dojo/promise/Promise.html" title="dojo/promise/Promise reference">dojo/promise/Promise reference</a></li>
+<li><a href="http://dojotoolkit.org/reference-guide/1.8/dojo/Deferred.html" title="dojo/Deferred reference">dojo/Deferred reference</a></li>
+<li><a href="http://dojotoolkit.org/reference-guide/1.8/dojo/promise/all.html" title="dojo/promise/all reference">dojo/promise/all reference</a></li>
+<li><a href="http://dojotoolkit.org/reference-guide/1.8/dojo/promise/first.html" title="dojo/promise/all reference">dojo/promise/all reference</a></li>
+<li><a href="http://wiki.commonjs.org/wiki/Promises/A" title="CommonJS Promises/A">CommonJS Promises/A</a></li>
+<li><a href="https://github.com/joyent/node/wiki/modules#wiki-async-flow" title="Control flow/async modules">Control flow/async modules</a></li>
+<li><a href="http://www.slideshare.net/domenicdenicola/callbacks-promises-and-coroutines-oh-my-the-evolution-of-asynchronicity-in-javascript" title="Callbacks, Promises, and Coroutines (oh my!): Asynchronous Programming Patterns in JavaScript">Callbacks, Promises, and Coroutines (oh my!): Asynchronous Programming Patterns in JavaScript</a></li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[An introduction to Lean UX]]></title>
