@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ux | CodePath]]></title>
   <link href="http://codepath.io/blog/categories/ux/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-19T01:24:32-03:00</updated>
+  <updated>2012-09-24T00:28:20-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -12,6 +12,96 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dark Patterns]]></title>
+    <link href="http://codepath.io/blog/2012/09/23/dark-patterns/"/>
+    <updated>2012-09-23T19:26:00-03:00</updated>
+    <id>http://codepath.io/blog/2012/09/23/dark-patterns</id>
+    <content type="html"><![CDATA[<p>UX involves having an understanding on the user's behavior and influencing it, watching them while they use an interface and reacting to that. Where's the line between influence and manipulation in design?</p>
+
+<p>As with any other tools we can use interaction design honestly and deceitfully. Every heuristic and pattern has two sides, so it's up to you wether to be on the dark side of the force or not.</p>
+
+<h2>What's a dark pattern?</h2>
+
+<p><blockquote><p>Dark Patterns are not mistakes, they are carefully crafted with a solid understanding of human psychology, and they do not have the user's interests in mind.</p><footer><strong>Harry Brignull</strong> <cite><a href='http://wiki.darkpatterns.org/'>darkpatterns.org</a></cite></footer></blockquote></p>
+
+<h2>Shared knowledge = no cheating</h2>
+
+<p>These dark patterns as well as persuasion techniques are only useful when the victim doesn't know about them.</p>
+
+<p>If we know what we are dealing with it's less likely that we fall for them. Here are some examples:</p>
+
+<ul>
+<li><p><a href="http://wiki.darkpatterns.org/Sneak_into_Basket">Sneak into basket</a>:
+Suggesting related products on the checkout is fine, but adding them straight on your cart is a whole different story. Users need to <em>remove the items</em> them if they manage to notice them in the first place.</p></li>
+<li><p><a href="http://wiki.darkpatterns.org/Roach_Motel">Roach Motel</a>:
+Making it really easy to perform certain actions (sign up, buy, subscribe) and then extremely difficult to revert those actions. Making this hard can consist of burying that feature under several layers of navigation, or plainly not providing a way to do that online.</p></li>
+<li><p><a href="http://wiki.darkpatterns.org/Forced_Continuity">Forced Continuity</a>:
+Forcing users to provide credit card information to sign up for a "free trial". Then, after the trial period is over the user automatically starts getting billed without any notifications.</p></li>
+<li><p><a href="http://wiki.darkpatterns.org/Trick_Questions">Trick questions</a>:
+Asking ambiguous questions, which when glanced upon appear to ask one thing, but if read carefully, asks another thing entirely.</p></li>
+</ul>
+
+
+<!-- more -->
+
+
+<h2>Can't see the forest for the trees?</h2>
+
+<p>Focusing just on conversion rates and not on the customer's feelings can cause great damage.</p>
+
+<p>With the rise of the lean startup movement we feel in the need to reach high conversion rates in very short periods of time. We implement one design solution after another, everything is run on metrics, so some people might think that A/B testing has always the the final answer, however, sometimes we need to take a step back and analyze where we stand.</p>
+
+<p><strong>A conversion is only meaningful when honestly achieved and really intended by the user.</strong></p>
+
+<p>If users feel deceived they might end up hating your company and publicly complaining to let others know about the scam. This can cause great damage on a brand's image and it's not efficient in the long run. In fact, there are several persuasion techniques that can be applied effectively without causing that resent feeling in the users.</p>
+
+<h2>There's no such thing as neutral user interfaces</h2>
+
+<p>We are always sort of directing the user's behavior, and to work in an interdisciplinary team we should definitely let marketers do their jobs. Here are some persuasion techniques presented by Robert Cialdini on his book <a href="http://www.amazon.com/Influence-Psychology-Persuasion-Business-Essentials/dp/006124189X/ref=sr_1_1?ie=UTF8&amp;qid=1300903223&amp;sr=8-1">"Influence: The Psychology of Persuasion"</a>.</p>
+
+<ul>
+<li><p><strong>Reciprocation:</strong> We want to return favors granted to us. If we feel that an app or website has done something for us, it's more likely that we want to return that favor by donating, sharing or whatever favor is asked to us.</p></li>
+<li><p><strong>Commitment and consistency:</strong> We want to be consistent with our sayings
+If we've posted on Facebook that we like company X, we've identified ourselves with that, so it's more likely that we want to stick with that on the future.</p></li>
+<li><p><strong>Social Proof:</strong> We enjoy doing what others do.
+This is a really wide-spread technique, you may have seen it as the "Popular choice" on a price comparison table or drop-down. Even when it's just in the form of an already selected radio button, default options are huge decision facilitators, so we should use them wisely with clear wording so the user is in control.</p></li>
+</ul>
+
+
+<p>This principle also takes the form of activity streams and successfully engages users to interact with applications.</p>
+
+<ul>
+<li><strong>Liking:</strong> We tend to comply more if the requester is someone we know and like.
+That's why referrals are for: 'Share this referral link and both you and your friend will get $5 on credit',
+'John invites you to join XXX app on Facebook', 'Peter has sent you a DropBox invite'.</li>
+</ul>
+
+
+<p>As long as the user agrees on sending this communications this can be a powerful tool.</p>
+
+<ul>
+<li><p><strong>Authority:</strong> If a credible source says so, then we are in.
+We've seen this every time a sites uses an SSL badge, or some kind of certification. Users feel safer if a well known institution has certified the site or app they are interacting with. This technique is the basics of advertising where public figures represent a certain brand or site to give it more credibility.</p></li>
+<li><p><strong>Scarcity:</strong> We want to act fast if the resource is limited.
+An honest use of this technique would be to inform about the remaining stock of a certain product on an e-commerce site. A deceitful use would be to alter that data in order to create a sense of emergency when there's actually plenty of stock.</p></li>
+</ul>
+
+
+<p><strong>As you can see design patterns as well as persuasion techniques can be used both for good and evil, so where's the line between them?</strong></p>
+
+<h2>Expectation Management</h2>
+
+<p>In my humble opinion a balance between the interests of the users and the company can be achieved with proper Expectation Management.Users should always be in control and know exactly what to expect from any interaction with our site our app.</p>
+
+<p>With resources such as <a href="http://wiki.darkpatterns.org">darkpatterns.org</a> the design community is getting stronger by creating a simple way to say no when we are asked to do unethical work.</p>
+
+<p>Empowering a more balanced mindset where quantitative data is as important as qualitative data is crucial for any company to last. Credibility and trust on a company are the basics to achieve customer loyalty.</p>
+
+<p>After all... if you felt cheated. Would you come back for more?</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[An introduction to Lean UX]]></title>
