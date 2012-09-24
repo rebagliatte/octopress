@@ -4,11 +4,11 @@
   <title><![CDATA[Category: ux | CodePath]]></title>
   <link href="http://codepath.io/blog/categories/ux/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-24T00:28:20-03:00</updated>
+  <updated>2012-09-24T00:35:42-03:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
-    
+    <email><![CDATA[hi@codepath.io]]></email>
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
