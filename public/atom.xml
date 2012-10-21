@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-09-24T00:37:23-03:00</updated>
+  <updated>2012-10-21T16:00:12-02:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -12,6 +12,29 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Rails Rumble 2012: tripbudget.us]]></title>
+    <link href="http://codepath.io/blog/2012/10/19/rails-rumble/"/>
+    <updated>2012-10-19T10:58:00-02:00</updated>
+    <id>http://codepath.io/blog/2012/10/19/rails-rumble</id>
+    <content type="html"><![CDATA[<p>As any group of friends we enjoy travelling together and always find ourselves looking into countless emails to get the prices of the hostels or plane tickets we considered for our trips.</p>
+
+<p>That&#8217;s why we came up with the idea of generating a plattform to discuss this topics and compare alternatives and prices in collaboration wiht your travel group.</p>
+
+<!-- more -->
+
+
+<p>tripbudget.us allows people to create trips, pick destinations and estimate their expenses in a clean an organized way, centralizing all the alternatives that came up as well as the discussions about them.</p>
+
+<p>Rails Rumble was the perfect opportunity to get the project going. After an epic period of 48 hours of non-stop
+coding, some beers and plenty of adrenaline we got it up and running.</p>
+
+<p><img src="https://pbs.twimg.com/media/A5N2RY1CUAAvv8C.png" alt="After the competition: Tired and happy faces" /></p>
+
+<p>We couldn&#8217;t have done it without the collaboration of our good friend @raviolicode and the support of the wonderful people at Coworking Montevideo who shared their space and brownies with us during the weekend. You rock guys!</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Dark Patterns]]></title>
