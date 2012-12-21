@@ -4,7 +4,7 @@
   <title><![CDATA[CodePath]]></title>
   <link href="http://codepath.io/atom.xml" rel="self"/>
   <link href="http://codepath.io/"/>
-  <updated>2012-10-21T16:00:12-02:00</updated>
+  <updated>2012-12-21T11:56:36-02:00</updated>
   <id>http://codepath.io/</id>
   <author>
     <name><![CDATA[CodePath]]></name>
@@ -12,6 +12,87 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Skinny Models]]></title>
+    <link href="http://codepath.io/blog/2012/12/21/skinny-models/"/>
+    <updated>2012-12-21T10:38:00-02:00</updated>
+    <id>http://codepath.io/blog/2012/12/21/skinny-models</id>
+    <content type="html"><![CDATA[<p>Many times I found myself with fat models (ugh) having lots of methods for different formats of the data they have so they can be easily accessed on the views/controllers.
+Here&#8217;s a few examples of it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Project</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 1</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:tasks_count</span><span class="p">,</span> <span class="ss">:completed_tasks_count</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">pretty_completed_percentage</span> <span class="c1"># Not pretty :(</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">completed_tasks_count</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">tasks_count</span><span class="si">}</span><span class="s2">% completed&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 2</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:comments</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">last_comment</span>
+</span><span class='line'>    <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">comments</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="c1"># Crying already</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span><span class='line'>    <span class="n">doc</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 3</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_json</span>
+</span><span class='line'>    <span class="c1"># WHY ?!?!?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+<!-- more -->
+
+
+<p>All of these things could have been made out of the actual project attributes which are publicly visible.
+The problem here is that we are delegating the presentation and formatting of the data in the models.
+To many this might seem OK, but to me, the most important thing is that models should not be responsible for it, and should remain skinny.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Project</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:tasks_count</span><span class="p">,</span> <span class="ss">:completed_tasks_count</span><span class="p">,</span> <span class="ss">:started_at</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>A model is basically in charge of dealing with the data storage and application logic. You shouldn&#8217;t treat your models as an API willing to do whatever you need.
+In an MVC environment, adding all these logic into the controllers might not be a very good idea either, since you might end up stuffing too much code into them.
+The best solution (which has worked for me) is to add new &#8216;services&#8217; (or w/e you want to call it) in between and leave models alone. After all, MVC might not be the best for large web applications..</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Rails Rumble 2012: tripbudget.us]]></title>

@@ -9,7 +9,7 @@
   <meta name="author" content="CodePath">
 
   
-  <meta name="description" content="As any group of friends we enjoy travelling together and always find ourselves looking into countless emails to get the prices of the hostels or &hellip;">
+  <meta name="description" content="Many times I found myself with fat models (ugh) having lots of methods for different formats of the data they have so they can be easily accessed on &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -86,6 +86,114 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2012/12/21/skinny-models/">Skinny Models</a></h1>
+    
+    
+      <p class="meta">
+        
+  
+
+<span class="byline author vcard">by <span class="fn">Sebastian Borrazas</span></span>
+ on
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-12-21T10:38:00-02:00" pubdate data-updated="true">Dec 21<span>st</span>, 2012</time>
+        in
+        
+
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Many times I found myself with fat models (ugh) having lots of methods for different formats of the data they have so they can be easily accessed on the views/controllers.
+Here&#8217;s a few examples of it:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Project</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 1</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:tasks_count</span><span class="p">,</span> <span class="ss">:completed_tasks_count</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">pretty_completed_percentage</span> <span class="c1"># Not pretty :(</span>
+</span><span class='line'>    <span class="s2">&quot;</span><span class="si">#{</span><span class="n">completed_tasks_count</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="n">tasks_count</span><span class="si">}</span><span class="s2">% completed&quot;</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 2</span>
+</span><span class='line'>  <span class="kp">attr_accessor</span> <span class="ss">:comments</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">last_comment</span>
+</span><span class='line'>    <span class="n">doc</span> <span class="o">=</span> <span class="no">Nokogiri</span><span class="o">::</span><span class="no">HTML</span><span class="p">(</span><span class="n">comments</span><span class="o">.</span><span class="n">last</span><span class="o">.</span><span class="n">content</span><span class="p">)</span> <span class="c1"># Crying already</span>
+</span><span class='line'>    <span class="c1"># ...</span>
+</span><span class='line'>    <span class="n">doc</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># Example 3</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">to_json</span>
+</span><span class='line'>    <span class="c1"># WHY ?!?!?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+</div>
+  
+  
+    <footer>
+      <a rel="full-article" href="/blog/2012/12/21/skinny-models/">Read on &rarr;</a>
+    </footer>
+  
+
+
+    </article>
   
   
     <article>
@@ -511,6 +619,10 @@ How are the ghosts supposed to move by themselves? How and when should I notify 
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/blog/2012/12/21/skinny-models/">Skinny Models</a>
+      </li>
+    
+      <li class="post">
         <a href="/blog/2012/10/19/rails-rumble/">Rails Rumble 2012: tripbudget.us</a>
       </li>
     
@@ -524,10 +636,6 @@ How are the ghosts supposed to move by themselves? How and when should I notify 
     
       <li class="post">
         <a href="/blog/2012/09/17/an-introduction-to-lean-ux/">An introduction to Lean UX</a>
-      </li>
-    
-      <li class="post">
-        <a href="/blog/2012/08/27/ruby-on-redis/">Ruby on Redis</a>
       </li>
     
   </ul>
