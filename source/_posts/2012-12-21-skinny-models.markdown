@@ -44,7 +44,7 @@ end
 
 All of these things could have been made out of the actual project attributes which are publicly visible.
 The problem here is that we are delegating the presentation and formatting of the data in the models.
-To many this might seem OK, but to me, the most important thing is that models should not be responsible for it, and should remain skinny.
+To many this might seem OK, but to me, models should not be responsible for it, and should remain skinny.
 
 ``` ruby
 class Project
